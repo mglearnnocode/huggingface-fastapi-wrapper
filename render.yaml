@@ -1,0 +1,11 @@
+services:
+  - type: web
+    name: huggingface-wrapper
+    env: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn main:app --host 0.0.0.0 --port 10000
+    envVars:
+      - key: HF_TOKEN
+        sync: false
+      - key: MODEL_ID
+        value: HuggingFaceH4/zephyr-7b-beta
